@@ -26,5 +26,10 @@ class nrpe::config {
     notify => Class["nrpe::service"],
   }
 
+  line { "check_load" :
+    file => "/etc/nagios/nrpe_local.cfg",
+    line => "command[check_load]=/usr/lib/nagios/plugins/check_load -w ${processorcount},${processorcount - 5},${processorcount - 10} -c ${processorcount + 15},${processorcount + 10},${processorcount + 5}",
+    notify => Class["nrpe::service"],
+  }
 
 }

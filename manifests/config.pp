@@ -38,4 +38,12 @@ class nrpe::config {
     notify => Class["nrpe::service"],
   }
 
+  file { "/etc/sudoers.d/megaraid":
+    owner   => root,
+    group   => root,
+    mode    => 440,
+    content => "nagios ALL=(ALL) NOPASSWD:/usr/sbin/megacli
+",
+  }
+
 }

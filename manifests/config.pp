@@ -48,19 +48,19 @@ class nrpe::config {
 
   line { "check_proc_talkserver" :
     file => "/etc/nagios/nrpe_local.cfg",
-    line => "command[check_proc_talkserver]=/usr/lib/nagios/plugins/check_procs -a talkserver -w 1:1 -c 1:1",
+    line => "command[check_proc_talkserver]=service talkserver status",
     notify => Class["nrpe::service"],
   }
 
   line { "check_proc_filecache" :
     file => "/etc/nagios/nrpe_local.cfg",
-    line => "command[check_proc_filecache]=/usr/lib/nagios/plugins/check_procs -a filecache -w 1:1 -c 1:1",
+    line => "command[check_proc_filecache]=service filecache status",
     notify => Class["nrpe::service"],
   }
 
   line { "check_proc_nginx" :
     file => "/etc/nagios/nrpe_local.cfg",
-    line => "command[check_proc_nginx]=/usr/lib/nagios/plugins/check_procs -a 'nginx: master' -w 1:1 -c 1:1",
+    line => "command[check_proc_nginx]=/usr/lib/nagios/plugins/check_procs -a nginx -w 1:10 -c 1:10",
     notify => Class["nrpe::service"],
   }
 

@@ -32,4 +32,10 @@ class nrpe::config {
     notify => Class["nrpe::service"],
   }
 
+  line { "check_megaraid" :
+    file => "/etc/nagios/nrpe_local.cfg",
+    line => "command[check_megaraid]=/usr/lib/nagios/plugins/check_megaraid_sas -s 1",
+    notify => Class["nrpe::service"],
+  }
+
 }

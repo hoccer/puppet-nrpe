@@ -66,4 +66,10 @@ class nrpe::config {
     notify => Class["nrpe::service"],
   }
 
+  line { "check_linux_raid":
+    file => "/etc/nagios/nrpe_local.cfg",
+    line => "command[check_linux_raid]=/usr/lib/nagios/plugins/check_linux_raid",
+    notify => Class["nrpe::service"],
+  }
+
 }

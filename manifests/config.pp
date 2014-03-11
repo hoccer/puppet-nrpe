@@ -20,6 +20,18 @@ class nrpe::config {
     notify => Class["nrpe::service"],
   }
 
+  line { 'check_disk_files':
+    file => '/etc/nagios/nrpe_local.cfg',
+    line => 'command[check_disk_files]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /srv/files',
+    notify => Class['nrpe::service'],
+  }
+
+  line { 'check_disk_backup':
+    file => '/etc/nagios/nrpe_local.cfg',
+    line => 'command[check_disk_backup]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /srv/backup',
+    notify => Class['nrpe::service'],
+  }
+
   line { "check_total_procs":
     file => "/etc/nagios/nrpe_local.cfg",
     line => "command[check_total_procs]=/usr/lib/nagios/plugins/check_procs -w ${processorcount * 50 + 200} -c ${processorcount * 50 + 500}",

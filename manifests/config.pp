@@ -4,7 +4,7 @@ class nrpe::config {
 
   line { "allowed_hosts":
     file => "/etc/nagios/nrpe_local.cfg",
-    line => "allowed_hosts=127.0.0.1,192.76.129.23,80.82.201.36,80.82.201.37,80.82.201.38",
+    line => "allowed_hosts=127.0.0.1,192.76.129.23,80.82.201.36,80.82.201.37,80.82.201.38,10.10.10.3",
     notify => Class["nrpe::service"],
   }
 

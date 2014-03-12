@@ -84,4 +84,17 @@ class nrpe::config {
     notify => Class["nrpe::service"],
   }
 
+  line { 'check_linux_bonding':
+    file   => '/etc/nagios/nrpe_local.cfg',
+    line   => 'command[check_linux_bonding]=/usr/lib/nagios/plugins/check_linux_bonding',
+    notify => Class['nrpe::service'],
+  }
+
+  file { '/usr/lib/nagios/plugins/check_linux_bonding':
+    ensure  => present,
+    mode    => '0755',
+    source  => 'puppet:///modules/nrpe/check_linux_bonding',
+    notify  => Class['nrpe::service'],
+  }
+
 }

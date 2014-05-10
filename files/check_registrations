@@ -1,0 +1,5 @@
+#!/bin/bash
+
+registrations=`mongo talk /usr/lib/nagios/plugins/daily_registrations.js | tail -n 1`
+
+echo "OK - newly registered clients today: $registrations | registrations=$registrations"

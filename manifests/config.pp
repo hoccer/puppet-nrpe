@@ -97,4 +97,37 @@ class nrpe::config {
     notify  => Class['nrpe::service'],
   }
 
+  line { 'check_registrations':
+    file   => '/etc/nagios/nrpe_local.cfg',
+    line   => 'command[check_registrations]=/usr/lib/nagios/plugins/check_registrations',
+    notify => Class['nrpe::service'],
+  }
+
+  file { '/usr/lib/nagios/plugins/check_registrations':
+    ensure  => present,
+    mode    => '0755',
+    source  => 'puppet:///modules/nrpe/check_registrations',
+    notify  => Class['nrpe::service'],
+  }
+
+  file { '/usr/lib/nagios/plugins/daily_registrations.js':
+    ensure  => present,
+    mode    => '0755',
+    source  => 'puppet:///modules/nrpe/daily_registrations.js',
+    notify  => Class['nrpe::service'],
+  }
+
+  line { 'check_unique_talk_clients':
+    file   => '/etc/nagios/nrpe_local.cfg',
+    line   => 'command[check_unique_talk_clients]=/usr/lib/nagios/plugins/check_unique_talk_clients',
+    notify => Class['nrpe::service'],
+  }
+
+  file { '/usr/lib/nagios/plugins/check_unique_talk_clients':
+    ensure  => present,
+    mode    => '0755',
+    source  => 'puppet:///modules/nrpe/check_unique_talk_clients',
+    notify  => Class['nrpe::service'],
+  }
+
 }

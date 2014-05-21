@@ -74,7 +74,7 @@ class nrpe::config {
 
   line { "check_proc_nginx":
     file => "/etc/nagios/nrpe_local.cfg",
-    line => "command[check_proc_nginx]=/usr/lib/nagios/plugins/check_procs -a nginx -w 1:10 -c 1:10",
+    line => "command[check_proc_nginx]=/usr/lib/nagios/plugins/check_procs -a nginx -w 1:20 -c 1:20",
     notify => Class["nrpe::service"],
   }
 

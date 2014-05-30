@@ -1,6 +1,6 @@
 #!/bin/bash
 
 today=`date +%Y-%m-%d`
-clients=`grep $today /home/talk/talkserver/shared/log/talkserver.log | grep "logged in as" | awk '{ print $11}' | sort | uniq | wc -l`
+clients=`grep $today /home/talk/talkserver/shared/log/talkserver.log | grep "logged in as" | awk '{ print $NF}' | sort | uniq | wc -l`
 
 echo "OK - unique clients today: $clients | clients=$clients"

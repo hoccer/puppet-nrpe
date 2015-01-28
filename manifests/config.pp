@@ -16,7 +16,7 @@ class nrpe::config {
 
   line { "check_disk_root":
     file => "/etc/nagios/nrpe_local.cfg",
-    line => "command[check_disk_root]=/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -p /",
+    line => "command[check_disk_root]=/usr/lib/nagios/plugins/check_disk -w 10% -c 5% -p /",
     notify => Class["nrpe::service"],
   }
 

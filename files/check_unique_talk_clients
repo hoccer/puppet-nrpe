@@ -1,7 +1,7 @@
 #!/bin/bash
 
 today=`date +%Y-%m-%d`
-logfile=/home/talk/talkserver/shared/log/talkserver.`date +%Y-cw%V`.log
+logfile=/home/talk/talkserver/shared/log/talkserver.????-cw??.log
 clients=`grep $today $logfile | grep "logged in as" | awk '{ print $NF}' | sort | uniq | wc -l`
 
 echo "OK - unique clients today: $clients | clients=$clients"
